@@ -31,7 +31,7 @@ src/components/    UI shell
 
 ## Diagrams
 
-Level diagram images are expected at `public/diagrams/level-01.png` through `level-16.png`. Extract or export these from the BU Exam IV PDF and add them to that folder. The app shows a fallback message until images are present.
+Each level renders a compact SVG rack diagram (see `src/components/RackDiagram.tsx` and `src/modules/level-catalog/rack-layouts.ts`). Balls are gray unless rules require key balls (8-ball center, solid/stripe corners, 9-ball 1 and 9, etc.).
 
 ## Data
 

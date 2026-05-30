@@ -1,4 +1,6 @@
 import { getAllLevels } from "@/modules/level-catalog/levels";
+import { getLevelDiagram } from "@/modules/level-catalog/rack-layouts";
+import { RackDiagram } from "@/components/RackDiagram";
 
 interface LevelPickerProps {
   onSelect: (level: number) => void;
@@ -17,6 +19,7 @@ export function LevelPicker({ onSelect }: LevelPickerProps) {
             className="level-picker-button"
             onClick={() => onSelect(level.level)}
           >
+            <RackDiagram spec={getLevelDiagram(level.level)} level={level.level} compact />
             <span className="level-picker-number">
               {level.level}
               {level.optional ? "*" : ""}

@@ -66,31 +66,19 @@ button {
   margin-bottom: 1rem;
   border: 1px solid #333;
   border-radius: 8px;
-  background: #1a1a1a;
-  min-height: 120px;
-  display: grid;
-  place-items: center;
+  overflow: hidden;
 }
 
-.level-diagram {
-  max-width: 100%;
+.rack-diagram {
+  width: 100%;
   height: auto;
   display: block;
+  max-height: 180px;
 }
 
-.level-diagram.diagram-missing {
-  display: none;
-}
-
-.diagram-fallback {
-  margin: 1rem;
-  color: #777;
-  font-size: 0.875rem;
-  text-align: center;
-}
-
-.level-diagram:not(.diagram-missing) + .diagram-fallback {
-  display: none;
+.rack-diagram--compact {
+  max-height: 72px;
+  margin-bottom: 0.35rem;
 }
 
 .level-instructions {
@@ -213,9 +201,9 @@ button {
 .level-picker-button {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 0.25rem;
-  padding: 0.75rem;
+  padding: 0.5rem;
   border: 1px solid #444;
   border-radius: 8px;
   background: #1e1e1e;

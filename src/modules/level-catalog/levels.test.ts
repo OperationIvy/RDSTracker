@@ -17,7 +17,6 @@ describe("level catalog", () => {
     for (const level of getAllLevels()) {
       expect(level.title.length).toBeGreaterThan(0);
       expect(level.rating.length).toBeGreaterThan(0);
-      expect(level.diagramPath).toMatch(/^\/diagrams\/level-\d{2}\.png$/);
       expect(level.instructions.length).toBeGreaterThan(0);
     }
   });

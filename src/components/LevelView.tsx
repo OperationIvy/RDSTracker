@@ -1,4 +1,6 @@
 import { getLevel, GENERAL_RULES } from "@/modules/level-catalog/levels";
+import { getLevelDiagram } from "@/modules/level-catalog/rack-layouts";
+import { RackDiagram } from "@/components/RackDiagram";
 
 interface LevelViewProps {
   level: number;
@@ -6,6 +8,7 @@ interface LevelViewProps {
 
 export function LevelView({ level }: LevelViewProps) {
   const definition = getLevel(level);
+  const diagram = getLevelDiagram(level);
 
   return (
     <section className="level-view">
@@ -19,15 +22,7 @@ export function LevelView({ level }: LevelViewProps) {
       </header>
 
       <div className="diagram-wrap">
-        <img
-          src={definition.diagramPath}
-          alt={`Racking diagram for level ${definition.level}`}
-          className="level-diagram"
-          onError={(event) => {
-            event.currentTarget.classList.add("diagram-missing");
-          }}
-        />
-        <p className="diagram-fallback">Diagram: see BU Exam IV PDF if image is missing</p>
+        <RackDiagram spec={diagram} level={level} />
       </div>
 
       <ol className="level-instructions">

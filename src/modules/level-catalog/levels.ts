@@ -3,11 +3,8 @@ export interface LevelDefinition {
   title: string;
   rating: string;
   optional?: boolean;
-  diagramPath: string;
   instructions: string[];
 }
-
-const diagram = (level: number) => `/diagrams/level-${String(level).padStart(2, "0")}.png`;
 
 export const LEVELS: LevelDefinition[] = [
   {
@@ -15,7 +12,6 @@ export const LEVELS: LevelDefinition[] = [
     title: "6 balls, pocket OBs directly with no CB",
     rating: "lower novice",
     optional: true,
-    diagramPath: diagram(1),
     instructions: [
       "Break a rack of 6 balls.",
       "Remove the cue ball.",
@@ -27,7 +23,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 2,
     title: "6 balls, any order, BIH on every shot",
     rating: "mid novice",
-    diagramPath: diagram(2),
     instructions: [
       "Break a rack of 6 balls.",
       "Take cue ball in hand for each shot.",
@@ -38,7 +33,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 3,
     title: "6 balls, any order, 3 extra BIHs",
     rating: "upper novice",
-    diagramPath: diagram(3),
     instructions: [
       "Break a rack of 6 balls.",
       "Take cue ball in hand after the break and any 3 other times during the run.",
@@ -49,7 +43,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 4,
     title: "6 balls, any order, 2 extra BIHs",
     rating: "lower beginner (D-)",
-    diagramPath: diagram(4),
     instructions: [
       "Break a rack of 6 balls.",
       "Take cue ball in hand after the break and any 2 other times during the run.",
@@ -60,7 +53,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 5,
     title: "6 balls, any order, 1 extra BIH",
     rating: "mid beginner (D)",
-    diagramPath: diagram(5),
     instructions: [
       "Break a rack of 6 balls.",
       "Take cue ball in hand after the break and once any time during the run.",
@@ -71,7 +63,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 6,
     title: "7 balls (3 solids, 3 stripes, 8), 8-ball rules, 1 extra BIH",
     rating: "upper beginner (D+)",
-    diagramPath: diagram(6),
     instructions: [
       "Break a rack of 6 balls (3 solids, 3 stripes) with the 8 ball added (in the center or back).",
       "Play standard 8-ball rules, except take cue ball in hand after the break and once any time during the run.",
@@ -82,7 +73,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 7,
     title: "9 balls, any order, 1 extra BIH",
     rating: "lower intermediate (C-)",
-    diagramPath: diagram(7),
     instructions: [
       "Break a rack of 9 balls.",
       "Take cue ball in hand after the break and once any time during the run.",
@@ -93,7 +83,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 8,
     title: "9 balls (4 solids, 4 stripes, 8), 8-ball rules, 1 extra BIH",
     rating: "mid intermediate (C)",
-    diagramPath: diagram(8),
     instructions: [
       "Break a rack of 9 balls (4 solids, 4 stripes, with the 8 ball in the center).",
       "Play standard 8-ball rules, except take cue ball in hand after the break and once any time during the run.",
@@ -104,7 +93,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 9,
     title: "15 balls, any order, 2 extra BIHs",
     rating: "upper intermediate (C+)",
-    diagramPath: diagram(9),
     instructions: [
       "Break a rack of 15 balls.",
       "Take cue ball in hand after the break and any 2 other times during the run.",
@@ -115,7 +103,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 10,
     title: "6 balls, in order",
     rating: "lower advanced (B-)",
-    diagramPath: diagram(10),
     instructions: [
       "Break a rack of 6 balls.",
       "Take cue ball in hand after the break.",
@@ -126,7 +113,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 11,
     title: "15 balls, any order",
     rating: "mid advanced (B)",
-    diagramPath: diagram(11),
     instructions: [
       "Break a rack of 15 balls.",
       "Take cue ball in hand after the break.",
@@ -137,7 +123,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 12,
     title: "15 balls, 8-ball rules",
     rating: "upper advanced (B+)",
-    diagramPath: diagram(12),
     instructions: [
       "Break a rack of 15 balls.",
       "Play standard 8-ball rules, except take cue ball in hand after the break.",
@@ -148,7 +133,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 13,
     title: "9 balls (4 solids, 4 stripes, 8), 8-ball rules, remaining balls in order",
     rating: "lower shortstop (A-)",
-    diagramPath: diagram(13),
     instructions: [
       "Break a rack of 9 balls (4 solids, 4 stripes, with the 8 ball in the center).",
       "Play standard 8-ball rules, except take cue ball in hand after the break.",
@@ -160,7 +144,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 14,
     title: "9 balls, 9-ball rules",
     rating: "upper shortstop (A)",
-    diagramPath: diagram(14),
     instructions: [
       "Break a rack of 9 balls.",
       "Play standard 9-ball rules, except take cue ball in hand after the break.",
@@ -172,7 +155,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 15,
     title: "15 balls, 8-ball rules, remaining balls in order",
     rating: "semipro / pro (A+/AA)",
-    diagramPath: diagram(15),
     instructions: [
       "Break a rack of 15 balls.",
       "Play standard 8-ball rules, except take cue ball in hand after the break.",
@@ -184,7 +166,6 @@ export const LEVELS: LevelDefinition[] = [
     level: 16,
     title: "15 balls, in order",
     rating: "world class pro (A++/AAA)",
-    diagramPath: diagram(16),
     instructions: [
       "Break a rack of 15 balls.",
       "Take cue ball in hand after the break.",
