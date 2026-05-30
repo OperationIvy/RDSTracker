@@ -289,9 +289,36 @@ button {
   background: #252525;
 }
 
+.level-picker-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
 .level-picker-number {
+  flex-shrink: 0;
   font-size: 1.25rem;
   font-weight: 700;
+  line-height: 1.1;
+}
+
+.level-stats--compact {
+  margin: 0;
+  min-width: 0;
+  text-align: right;
+  color: #9aa0a6;
+}
+
+.level-stats-line--compact {
+  margin: 0;
+  font-size: 0.625rem;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.level-stats-line--compact + .level-stats-line--compact {
+  margin-top: 0.05rem;
 }
 
 .level-picker-rating {

@@ -93,6 +93,7 @@ export function App() {
           onSelect={(level) => void handleLevelSelect(level)}
           onClearData={() => void handleClearData()}
           hasData={history.frames.length > 0 || history.racks.length > 0 || currentLevel !== null}
+          history={history}
         />
       </main>
     );
