@@ -18,6 +18,20 @@ npm test
 npm run build
 ```
 
+## Deployment
+
+The live app is published from the **`gh-pages` branch**, which contains the built **`dist/`** output (not source). GitHub Pages serves it at:
+
+**https://operationivy.github.io/RDSTracker/**
+
+To rebuild and publish after changes on `main`:
+
+```bash
+npm run deploy
+```
+
+This runs `npm run build`, then pushes the contents of `dist/` to `gh-pages`. The app is configured with `base: "/RDSTracker/"` in `vite.config.ts` for that project-site URL.
+
 ## Project structure
 
 ```

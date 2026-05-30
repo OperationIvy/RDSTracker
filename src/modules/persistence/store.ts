@@ -96,6 +96,10 @@ export class RdsStore {
     const data = await this.adapter.load();
     return { frames: data.frames, racks: data.racks };
   }
+
+  async clearAllData(): Promise<void> {
+    await this.adapter.save(createEmptyData());
+  }
 }
 
 export function createBrowserStore(): RdsStore {

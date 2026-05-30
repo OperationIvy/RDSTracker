@@ -43,4 +43,16 @@ describe("RdsStore", () => {
     expect(history.racks).toHaveLength(6);
     expect(await store.getCurrentLevel()).toBe(4);
   });
+
+  it("clears all stored data", async () => {
+    const store = new RdsStore(new MemoryPersistence());
+    await store.setCurrentLevel(6);
+    await store.submitFrame(["win", "win", "loss"], 6);
+
+    await store.clearAllData();
+
+    expect(await store.getCurrentLevel()).toBeNull();
+    expect((await store.getHistory()).frames).toHaveLength(0);
+    expect((await store.getHistory()).racks).toHaveLength(0);
+  });
 });

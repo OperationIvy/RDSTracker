@@ -50,6 +50,37 @@ button {
 .level-header h1 {
   margin: 0 0 0.25rem;
   font-size: 1.5rem;
+  line-height: 1.35;
+}
+
+.level-stats {
+  margin: 0.35rem 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #9aa0a6;
+}
+
+.level-stats-line {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.level-stats-line + .level-stats-line {
+  margin-top: 0.15rem;
+}
+
+.stat-wins {
+  color: #69f0ae;
+  font-weight: 600;
+}
+
+.stat-losses {
+  color: #ff8a80;
+  font-weight: 600;
+}
+
+.stat-rate {
+  font-weight: 600;
 }
 
 .level-rating {
@@ -58,15 +89,42 @@ button {
 }
 
 .level-title {
-  margin: 0.5rem 0 1rem;
+  margin: 0.35rem 0 0.75rem;
 }
 
 .diagram-wrap {
   position: relative;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   border: 1px solid #333;
   border-radius: 8px;
   overflow: hidden;
+  background: #1a1a1a;
+}
+
+.diagram-wrap-inner {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 0.5rem 0.625rem;
+}
+
+.diagram-wrap-inner .rack-diagram {
+  flex: 0 0 auto;
+  width: min(38%, 140px);
+  max-height: 120px;
+}
+
+.diagram-wrap-inner .level-instructions {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding-left: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.35;
+}
+
+.level-instructions li + li {
+  margin-top: 0.15rem;
 }
 
 .rack-diagram {
@@ -81,18 +139,12 @@ button {
   margin-bottom: 0.35rem;
 }
 
-.level-instructions {
-  margin: 0 0 1rem;
-  padding-left: 1.25rem;
-}
-
 .general-rules {
-  margin-bottom: 1.5rem;
   color: #bbb;
 }
 
 .scoring-grid {
-  margin: 1.5rem 0;
+  margin: 1rem 0 0.75rem;
 }
 
 .grid-header,
@@ -189,6 +241,27 @@ button {
 
 .level-picker h1 {
   margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+.level-picker-byline {
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  font-style: italic;
+  color: #9aa0a6;
+}
+
+.level-picker-byline a {
+  color: #8ab4ff;
+  text-decoration: none;
+}
+
+.level-picker-byline a:hover {
+  text-decoration: underline;
+}
+
+.level-picker .general-rules {
+  margin: 0.75rem 0 1rem;
 }
 
 .level-picker-grid {
@@ -229,4 +302,152 @@ button {
 .level-picker-note {
   color: #888;
   font-size: 0.875rem;
+}
+
+.level-picker-actions {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333;
+}
+
+.danger-button {
+  border: 1px solid #8b3a3a;
+  border-radius: 8px;
+  background: transparent;
+  color: #ff8a80;
+  padding: 0.625rem 1rem;
+}
+
+.danger-button:hover {
+  background: #2a1818;
+}
+
+.danger-button--solid {
+  background: #8b3a3a;
+  color: #fff;
+}
+
+.danger-button--solid:hover {
+  background: #6d2e2e;
+}
+
+.clear-confirm {
+  border: 1px solid #5a3030;
+  border-radius: 8px;
+  background: #1f1515;
+  padding: 1rem;
+}
+
+.clear-confirm-title {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+  color: #ff8a80;
+}
+
+.clear-confirm-body {
+  margin: 0 0 1rem;
+  color: #ccc;
+}
+
+.clear-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+  .app-play {
+    padding: 0.5rem 0.75rem 1.5rem;
+  }
+
+  .app-play .app-toolbar {
+    margin-bottom: 0.15rem;
+  }
+
+  .app-play .level-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .app-play .level-stats {
+    margin: 0.15rem 0 0.3rem;
+    font-size: 0.8125rem;
+  }
+
+  .app-play .level-stats-line {
+    line-height: 1.3;
+  }
+
+  .app-play .level-rating {
+    font-size: 0.8125rem;
+  }
+
+  .app-play .level-title {
+    margin: 0.15rem 0 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.3;
+  }
+
+  .app-play .diagram-wrap {
+    margin-bottom: 0.5rem;
+  }
+
+  .app-play .diagram-wrap-inner {
+    gap: 0.5rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .app-play .diagram-wrap-inner .rack-diagram {
+    width: 30%;
+    max-height: 80px;
+  }
+
+  .app-play .diagram-wrap-inner .level-instructions {
+    padding-left: 0.85rem;
+    font-size: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .app-play .level-instructions li + li {
+    margin-top: 0.1rem;
+  }
+
+  .app-play .scoring-grid {
+    margin: 0.5rem 0;
+  }
+
+  .app-play .grid-header {
+    margin-bottom: 0.35rem;
+  }
+
+  .app-play .grid-header,
+  .app-play .grid-row {
+    gap: 0.35rem;
+    grid-template-columns: 2.75rem repeat(3, 1fr);
+  }
+
+  .app-play .grid-col-label,
+  .app-play .grid-row-label {
+    font-size: 0.875rem;
+  }
+
+  .app-play .grid-cell {
+    min-height: 2.75rem;
+    font-size: 1.5rem;
+    border-width: 1px;
+    border-radius: 6px;
+  }
+
+  .app-play .frame-footer {
+    gap: 0.5rem;
+  }
+
+  .app-play .frame-tally {
+    font-size: 0.9375rem;
+  }
+
+  .app-play .submit-button {
+    padding: 0.5rem 0.875rem;
+    font-size: 0.9375rem;
+  }
 }
