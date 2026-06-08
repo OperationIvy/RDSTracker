@@ -3,6 +3,7 @@ import type { FrameRecord, RackRecord } from "@/types";
 export interface LevelStats {
   frameWins: number;
   frameLosses: number;
+  framePushes: number;
   rackWins: number;
   rackLosses: number;
 }
@@ -14,6 +15,7 @@ export function computeLevelStats(
 ): LevelStats {
   let frameWins = 0;
   let frameLosses = 0;
+  let framePushes = 0;
 
   for (const frame of frames) {
     if (frame.levelBefore !== level) {
@@ -21,6 +23,8 @@ export function computeLevelStats(
     }
     if (frame.wins >= 2) {
       frameWins += 1;
+    } else if (frame.wins === 1) {
+      framePushes += 1;
     } else {
       frameLosses += 1;
     }
@@ -40,7 +44,7 @@ export function computeLevelStats(
     }
   }
 
-  return { frameWins, frameLosses, rackWins, rackLosses };
+  return { frameWins, frameLosses, framePushes, rackWins, rackLosses };
 }
 
 function formatWinRate(wins: number, total: number): string {
@@ -70,11 +74,13 @@ export function winRateColor(rate: number): string {
 }
 
 export function hasLevelStats(stats: LevelStats): boolean {
-  return stats.frameWins + stats.frameLosses + stats.rackWins + stats.rackLosses > 0;
+  return (
+    stats.frameWins + stats.frameLosses + stats.framePushes + stats.rackWins + stats.rackLosses > 0
+  );
 }
 
 export function formatLevelStats(stats: LevelStats): string | null {
-  const frameTotal = stats.frameWins + stats.frameLosses;
+  const frameTotal = stats.frameWins + stats.frameLosses + stats.framePushes;
   const rackTotal = stats.rackWins + stats.rackLosses;
 
   if (frameTotal === 0 && rackTotal === 0) {
@@ -85,7 +91,7 @@ export function formatLevelStats(stats: LevelStats): string | null {
 
   if (frameTotal > 0) {
     parts.push(
-      `${stats.frameWins}-${stats.frameLosses} (${formatWinRate(stats.frameWins, frameTotal)}) frames`,
+      `${stats.frameWins}-${stats.frameLosses}-${stats.framePushes} (${formatWinRate(stats.frameWins, frameTotal)}) frames`,
     );
   }
 

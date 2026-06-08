@@ -37,7 +37,8 @@ describe("computeLevelStats", () => {
 
     expect(computeLevelStats(10, frames, racks)).toEqual({
       frameWins: 1,
-      frameLosses: 2,
+      frameLosses: 1,
+      framePushes: 1,
       rackWins: 3,
       rackLosses: 1,
     });
@@ -45,15 +46,28 @@ describe("computeLevelStats", () => {
 });
 
 describe("formatLevelStats", () => {
+  it("formats frame records as win-loss-push", () => {
+    expect(
+      formatLevelStats({
+        frameWins: 5,
+        frameLosses: 4,
+        framePushes: 1,
+        rackWins: 0,
+        rackLosses: 0,
+      }),
+    ).toBe("5-4-1 (.500) frames");
+  });
+
   it("formats win-loss records with three-decimal rates", () => {
     expect(
       formatLevelStats({
         frameWins: 2,
         frameLosses: 2,
+        framePushes: 0,
         rackWins: 3,
         rackLosses: 9,
       }),
-    ).toBe("2-2 (.500) frames, 3-9 (.250) racks");
+    ).toBe("2-2-0 (.500) frames, 3-9 (.250) racks");
   });
 
   it("returns null when there is no history", () => {
@@ -61,6 +75,7 @@ describe("formatLevelStats", () => {
       formatLevelStats({
         frameWins: 0,
         frameLosses: 0,
+        framePushes: 0,
         rackWins: 0,
         rackLosses: 0,
       }),

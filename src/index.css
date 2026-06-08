@@ -79,6 +79,11 @@ button {
   font-weight: 600;
 }
 
+.stat-pushes {
+  color: #ffd54f;
+  font-weight: 600;
+}
+
 .stat-rate {
   font-weight: 600;
 }

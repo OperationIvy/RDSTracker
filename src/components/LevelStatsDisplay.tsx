@@ -11,15 +11,39 @@ interface LevelStatsDisplayProps {
   compact?: boolean;
 }
 
-function StatLine({
+function FrameStatLine({
   wins,
   losses,
-  label,
+  pushes,
   compact = false,
 }: {
   wins: number;
   losses: number;
-  label: "frames" | "racks";
+  pushes: number;
+  compact?: boolean;
+}) {
+  const total = wins + losses + pushes;
+  const rate = winRate(wins, total);
+
+  return (
+    <p className={`level-stats-line${compact ? " level-stats-line--compact" : ""}`}>
+      <span className="stat-wins">{wins}</span>-<span className="stat-losses">{losses}</span>-
+      <span className="stat-pushes">{pushes}</span>{" "}
+      <span className="stat-rate" style={{ color: winRateColor(rate) }}>
+        ({formatWinRate(wins, total)})
+      </span>{" "}
+      frames
+    </p>
+  );
+}
+
+function RackStatLine({
+  wins,
+  losses,
+  compact = false,
+}: {
+  wins: number;
+  losses: number;
   compact?: boolean;
 }) {
   const total = wins + losses;
@@ -31,7 +55,7 @@ function StatLine({
       <span className="stat-rate" style={{ color: winRateColor(rate) }}>
         ({formatWinRate(wins, total)})
       </span>{" "}
-      {label}
+      racks
     </p>
   );
 }
@@ -41,21 +65,21 @@ export function LevelStatsDisplay({ stats, compact = false }: LevelStatsDisplayP
     return null;
   }
 
-  const frameTotal = stats.frameWins + stats.frameLosses;
+  const frameTotal = stats.frameWins + stats.frameLosses + stats.framePushes;
   const rackTotal = stats.rackWins + stats.rackLosses;
 
   return (
     <div className={`level-stats${compact ? " level-stats--compact" : ""}`}>
       {frameTotal > 0 && (
-        <StatLine
+        <FrameStatLine
           wins={stats.frameWins}
           losses={stats.frameLosses}
-          label="frames"
+          pushes={stats.framePushes}
           compact={compact}
         />
       )}
       {rackTotal > 0 && (
-        <StatLine wins={stats.rackWins} losses={stats.rackLosses} label="racks" compact={compact} />
+        <RackStatLine wins={stats.rackWins} losses={stats.rackLosses} compact={compact} />
       )}
     </div>
   );
