@@ -37,6 +37,8 @@ button {
 .app-toolbar {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 0.25rem;
   margin-bottom: 0.5rem;
 }
 
@@ -249,6 +251,17 @@ button {
   margin-bottom: 0.25rem;
 }
 
+.level-picker-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.level-picker-header h1 {
+  margin-top: 0;
+}
+
 .level-picker-byline {
   margin: 0 0 0.75rem;
   font-size: 0.875rem;
@@ -388,6 +401,194 @@ button {
   flex-wrap: wrap;
 }
 
+.chart-icon-button {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #1e1e1e;
+  color: #c4c7c5;
+}
+
+.chart-icon-button:hover:not(:disabled) {
+  border-color: #666;
+  background: #252525;
+  color: #e8e6e3;
+}
+
+.chart-icon-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.chart-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart-icon circle {
+  fill: currentColor;
+  stroke: none;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.modal-panel {
+  width: min(100%, 380px);
+  max-height: calc(100vh - 2rem);
+  overflow: auto;
+  border: 1px solid #444;
+  border-radius: 12px;
+  background: #1a1a1a;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem 0.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+.modal-close {
+  border: none;
+  background: none;
+  color: #9aa0a6;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0.125rem 0.375rem;
+}
+
+.modal-close:hover {
+  color: #e8e6e3;
+}
+
+.modal-body {
+  padding: 0.75rem 1rem 1rem;
+}
+
+.chart-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chart-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chart-grid-line {
+  stroke: #333;
+  stroke-width: 1;
+}
+
+.chart-axis-label {
+  fill: #888;
+  font-size: 10px;
+  text-anchor: middle;
+}
+
+.chart-axis-label--y {
+  text-anchor: end;
+}
+
+.chart-axis-label--end {
+  text-anchor: end;
+}
+
+.chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  font-size: 0.8125rem;
+  color: #9aa0a6;
+}
+
+.chart-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.chart-legend-swatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 2px;
+}
+
+.chart-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chart-bar-row {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr 2.75rem;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.8125rem;
+}
+
+.chart-bar-label {
+  color: #9aa0a6;
+}
+
+.chart-bar-track {
+  height: 0.625rem;
+  border-radius: 999px;
+  background: #2a2a2a;
+  overflow: hidden;
+}
+
+.chart-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.chart-bar-value {
+  text-align: right;
+  color: #ccc;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart-empty {
+  margin: 0;
+  color: #888;
+}
+
+.chart-caption {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #888;
+  line-height: 1.4;
+}
+
 @media (max-width: 480px) {
   .app-play {
     padding: 0.5rem 0.75rem 1.5rem;
@@ -399,15 +600,6 @@ button {
 
   .app-play .level-header h1 {
     font-size: 1.25rem;
-  }
-
-  .app-play .level-stats {
-    margin: 0.15rem 0 0.3rem;
-    font-size: 0.8125rem;
-  }
-
-  .app-play .level-stats-line {
-    line-height: 1.3;
   }
 
   .app-play .level-rating {

@@ -1,15 +1,12 @@
 import { getLevel } from "@/modules/level-catalog/levels";
 import { getLevelDiagram } from "@/modules/level-catalog/rack-layouts";
 import { RackDiagram } from "@/components/RackDiagram";
-import { LevelStatsDisplay } from "@/components/LevelStatsDisplay";
-import type { LevelStats } from "@/modules/stats/level-stats";
 
 interface LevelViewProps {
   level: number;
-  stats?: LevelStats | null;
 }
 
-export function LevelView({ level, stats }: LevelViewProps) {
+export function LevelView({ level }: LevelViewProps) {
   const definition = getLevel(level);
   const diagram = getLevelDiagram(level);
 
@@ -20,7 +17,6 @@ export function LevelView({ level, stats }: LevelViewProps) {
           Level {definition.level}
           {definition.optional ? " (optional)" : ""}
         </h1>
-        {stats && <LevelStatsDisplay stats={stats} />}
         <p className="level-rating">{definition.rating}</p>
         <p className="level-title">{definition.title}</p>
       </header>

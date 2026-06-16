@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { GeneralRules } from "@/components/GeneralRules";
+import { LevelHistoryModalTrigger } from "@/components/LevelHistoryModalTrigger";
 import { LevelStatsDisplay } from "@/components/LevelStatsDisplay";
 import { getAllLevels } from "@/modules/level-catalog/levels";
 import { getLevelDiagram } from "@/modules/level-catalog/rack-layouts";
@@ -19,17 +20,22 @@ export function LevelPicker({ onSelect, onClearData, hasData, history }: LevelPi
 
   return (
     <section className="level-picker">
-      <h1>Runout Drill System Tracker</h1>
-      <p className="level-picker-byline">
-        Based on Dr. Dave&apos;s{" "}
-        <a
-          href="https://drdavepoolinfo.com/faq/drill/rds/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Runout Drill System
-        </a>
-      </p>
+      <div className="level-picker-header">
+        <div>
+          <h1>Runout Drill System Tracker</h1>
+          <p className="level-picker-byline">
+            Based on Dr. Dave&apos;s{" "}
+            <a
+              href="https://drdavepoolinfo.com/faq/drill/rds/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Runout Drill System
+            </a>
+          </p>
+        </div>
+        <LevelHistoryModalTrigger frames={history.frames} />
+      </div>
       <GeneralRules />
       <p>Pick a starting level you are confident you can run 2 of 3 racks at.</p>
       <div className="level-picker-grid">

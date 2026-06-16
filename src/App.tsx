@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { LevelPicker } from "@/components/LevelPicker";
+import { LevelStatsModalTrigger } from "@/components/LevelStatsModalTrigger";
 import { LevelView } from "@/components/LevelView";
 import { ScoringGrid } from "@/components/ScoringGrid";
 import { createBrowserStore } from "@/modules/persistence/store";
@@ -9,7 +10,6 @@ import {
   EMPTY_FRAME,
   frameTally,
 } from "@/modules/session/session-state";
-import { computeLevelStats } from "@/modules/stats/level-stats";
 import type { FrameDraft, FrameOutcome, FrameRecord, RackRecord } from "@/types";
 
 const store = createBrowserStore();
@@ -39,12 +39,6 @@ export function App() {
 
   const tally = useMemo(() => frameTally(draft), [draft]);
   const showSubmit = canSubmitFrame(draft);
-  const levelStats = useMemo(() => {
-    if (currentLevel === null) {
-      return null;
-    }
-    return computeLevelStats(currentLevel, history.frames, history.racks);
-  }, [currentLevel, history]);
 
   const handleLevelSelect = useCallback(async (level: number) => {
     await store.setCurrentLevel(level);
@@ -102,12 +96,13 @@ export function App() {
   return (
     <main className="app app-play">
       <div className="app-toolbar">
+        <LevelStatsModalTrigger level={currentLevel} history={history} />
         <button type="button" className="text-button" onClick={() => setChangingLevel(true)}>
           Change level
         </button>
       </div>
 
-      <LevelView level={currentLevel} stats={levelStats} />
+      <LevelView level={currentLevel} />
 
       <ScoringGrid draft={draft} onChange={setDraft} />
 
