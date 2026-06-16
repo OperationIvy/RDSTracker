@@ -7,6 +7,7 @@ Track 3-rack frames, apply official level-up/down rules, and persist frame- and 
 ## Docs
 
 - [PRD](docs/PRD.md)
+- [TODO](docs/TODO.md) — planned work (e.g. GUID-in-URL cloud persistence)
 - [BU Exam IV instructions PDF](BU_Exam-IV_Runout_Drill_System.pdf)
 
 ## Development

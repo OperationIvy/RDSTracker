@@ -1,0 +1,47 @@
+---
+description: RDS Tracker purpose, architecture, deployment, and scope
+alwaysApply: true
+---
+
+# RDS Tracker — Project Overview
+
+Companion web app for [Dr. Dave's Runout Drill System](https://drdavepoolinfo.com/faq/drill/rds/) (BU Exam IV progressive/adaptive format). Credit Dr. Dave via the level-select byline; do not republish his instructional content beyond brief rule summaries already in the catalog.
+
+## What it does
+
+- Shows current RDS level: diagram, rules, skill rating
+- 3-rack win/loss grid with submit gating and official level-up/down rules (2+ wins → +1, 1 win → stay, 0 wins → −1; clamp 1–16)
+- Persists frame + rack history locally; shows per-level W/L stats on level page and level picker
+- **RDS 100** scored format is out of scope
+
+## Module layout
+
+| Path | Responsibility |
+|------|----------------|
+| `src/modules/level-catalog/` | Static levels 1–16, `GENERAL_RULES`, rack diagram specs |
+| `src/modules/frame-scoring/` | Pure `scoreFrame()` logic — no I/O |
+| `src/modules/session/` | In-progress `FrameDraft` helpers (`toggleRackCell`, `canSubmitFrame`, etc.) |
+| `src/modules/persistence/` | `RdsStore` + `PersistenceAdapter`; currently `localStorage` |
+| `src/modules/stats/` | `computeLevelStats`, win-rate formatting/color |
+| `src/components/` | React UI only; no business rules |
+| `src/types.ts` | Shared types (`AppData`, `FrameRecord`, `RackRecord`, …) |
+
+Keep logic in modules; components orchestrate and render. Extend via `PersistenceAdapter`, not by bypassing `RdsStore`.
+
+## UI conventions
+
+- Mobile-first: play screen should fit one phone viewport (compact diagram box, no general rules on level page)
+- General RDS rules collapsible lives on **level select only**
+- Stats: green wins, red losses, gradient averages (0 → red, .333 → yellow, .666+ → green)
+- Frame win = 2+ racks in frame; rack stats = individual win/loss at that level
+
+## Deployment
+
+- Live site: `gh-pages` branch (built `dist/`), **https://operationivy.github.io/RDSTracker/**
+- `vite.config.ts` uses `base: "/RDSTracker/"`
+- Publish: `npm run deploy` (build + gh-pages push). GitHub Pages is static only — no server-side storage.
+
+## Docs
+
+- Product spec: `docs/PRD.md`
+- Future work: `docs/TODO.md`

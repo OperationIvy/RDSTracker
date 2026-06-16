@@ -1,0 +1,31 @@
+---
+description: TypeScript and React conventions for RDS Tracker
+globs: src/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# Code Conventions
+
+## Patterns
+
+- Functional React components; state in `App.tsx`, pure helpers in modules
+- Path alias: `@/` → `src/`
+- Prefer extending existing abstractions (`PersistenceAdapter`, `RdsStore`, `LevelStatsDisplay`) over parallel implementations
+
+## Testing
+
+- Vitest; colocated `*.test.ts` next to modules
+- Test behavior and pure logic, not React implementation details
+- High priority: `score-frame`, `store`, `session-state`, `level-stats`, level catalog
+
+## Persistence (current)
+
+- Key: `rds-tracker-data` in `localStorage`
+- `AppData`: `{ currentLevel, frames[], racks[] }`
+- `submitFrame()` writes 1 frame + 3 racks atomically via adapter
+
+## Changes
+
+- Minimize diff scope; match existing naming and file layout
+- Do not commit or deploy unless asked
+- Level content sourced from BU Exam IV PDF; diagram logic in `rack-layouts.ts` + `RackDiagram.tsx`
